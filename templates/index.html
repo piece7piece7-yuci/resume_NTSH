@@ -69,6 +69,15 @@
             color: #555;
         }
 
+        /* 圖片大小設定 */
+        .qr-img {
+            max-width: 150px;
+            width: 100%;
+            height: auto;
+            margin-top: 10px;
+            border-radius: 8px;
+        }
+
         footer {
             text-align: center;
             padding: 20px;
@@ -121,6 +130,13 @@
         <div class="card">
             <a href="/ai">🤖 AI應用</a>
             <p>結合人工智慧工具，提升學習效率與創作能力。</p>
+        </div>
+
+        <!-- 新增的 QR Code 卡片 -->
+        <div class="card">
+            <a href="#">📱 掃描 QR Code</a>
+            <p>掃描下方 QR Code 快速存取相關資源</p>
+            <img src="/static/images/qr_code.jpg" alt="QR Code" class="qr-img">
         </div>
 
     </div>
