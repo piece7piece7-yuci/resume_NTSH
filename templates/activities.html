@@ -3,41 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ask a Question</title>
+    <title>課外活動與社團經驗</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             color: #333;
+            margin: 0;
+            padding: 0;
         }
         header {
             background-color: #4CAF50;
             color: white;
-            padding: 10px;
+            padding: 15px;
             text-align: center;
         }
         section {
-            margin: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 15px;
         }
-        .form-box {
+        .card-box {
             background-color: white;
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .club-item {
+            border-left: 4px solid #4CAF50;
+            padding-left: 15px;
+            margin-bottom: 15px;
+        }
+        .club-item h3 {
+            margin: 0 0 5px 0;
+            color: #2e7d32;
+        }
+        .club-item p {
+            margin: 0;
+            color: #666;
+            font-size: 14px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"], input[type="button"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            margin-top: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="button"] {
+            background-color: #757575;
+            margin-left: 5px;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        input[type="button"]:hover {
+            background-color: #616161;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>課外活動</h1>
+        <h1>課外活動與社團經驗</h1>
     </header>
+
     <section>
-        <div class="form-box">
+        <!-- 新增：社團活動展示區塊 -->
+        <div class="card-box">
+            <h2>🎵 社團活動紀錄</h2>
+            
+            <div class="club-item">
+                <h3>吉他社／熱音社 — 活動幹部</h3>
+                <p>負責社團成果發表會之企劃與執行，籌備多場校內外表演，培養團隊溝通與跨部門協調能力。</p>
+            </div>
+
+            <div class="club-item">
+                <h3>資訊研究社 — 社員</h3>
+                <p>參與程式語言基礎研習，學習網頁前端開發與 Python 基礎邏輯，並協助社團網頁建置。</p>
+            </div>
+        </div>
+
+        <!-- 原有的問題查詢與互動表單區塊 -->
+        <div class="card-box">
+            <h2>❓ 活動問題諮詢</h2>
             <form action="/activities" method="post">
-                <label for="question">你的問題:</label><br>
+                <label for="question">你的問題：</label><br>
                 <input type="text" id="question" name="question" value="{{ question }}"><br><br>
-                <label for="answer">答案:</label><br>
+                
+                <label for="answer">答案：</label><br>
                 <input type="text" id="answer" name="answer" readonly value="{{ answer }}"><br><br>
+                
                 <input type="submit" value="送出">
                 <input type="button" value="回首頁" onclick="window.location.href='/'">
             </form>
