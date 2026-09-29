@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>課外活動與社團經驗</title>
+    <title>課外活動</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,7 +15,7 @@
         header {
             background-color: #4CAF50;
             color: white;
-            padding: 15px;
+            padding: 20px;
             text-align: center;
         }
         section {
@@ -23,26 +23,27 @@
             margin: 20px auto;
             padding: 0 15px;
         }
-        .card-box {
+        .form-box {
             background-color: white;
-            padding: 20px;
+            padding: 25px;
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
-        .club-item {
-            border-left: 4px solid #4CAF50;
-            padding-left: 15px;
-            margin-bottom: 15px;
-        }
-        .club-item h3 {
-            margin: 0 0 5px 0;
+        .activity-title {
+            margin-top: 0;
             color: #2e7d32;
         }
-        .club-item p {
-            margin: 0;
-            color: #666;
-            font-size: 14px;
+        .activity-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 15px 0;
+            display: block;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
         }
         input[type="text"] {
             width: 100%;
@@ -52,60 +53,55 @@
             border: 1px solid #ccc;
             border-radius: 4px;
         }
+        .btn-group {
+            margin-top: 15px;
+        }
         input[type="submit"], input[type="button"] {
             background-color: #4CAF50;
             color: white;
             border: none;
-            padding: 10px 15px;
-            margin-top: 10px;
-            border-radius: 4px;
+            padding: 10px 20px;
+            border-radius: 5px;
             cursor: pointer;
+            margin-right: 10px;
         }
         input[type="button"] {
-            background-color: #757575;
-            margin-left: 5px;
+            background-color: #777;
         }
         input[type="submit"]:hover {
             background-color: #45a049;
         }
         input[type="button"]:hover {
-            background-color: #616161;
+            background-color: #555;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>課外活動與社團經驗</h1>
+        <h1>課外活動</h1>
     </header>
-
     <section>
-        <!-- 新增：社團活動展示區塊 -->
-        <div class="card-box">
-            <h2>🎵 社團活動紀錄</h2>
+        <!-- 新增：社團活動與苔球製作圖片區塊 -->
+        <div class="form-box">
+            <h2 class="activity-title">🌱 社團活動：苔球製作</h2>
+            <p>透過手作苔球植物，學習綠化生活與生態養護體驗。</p>
             
-            <div class="club-item">
-                <h3>吉他社／熱音社 — 活動幹部</h3>
-                <p>負責社團成果發表會之企劃與執行，籌備多場校內外表演，培養團隊溝通與跨部門協調能力。</p>
-            </div>
-
-            <div class="club-item">
-                <h3>資訊研究社 — 社員</h3>
-                <p>參與程式語言基礎研習，學習網頁前端開發與 Python 基礎邏輯，並協助社團網頁建置。</p>
-            </div>
+            <!-- 如果是 Flask 專案，建議使用以下 url_for 寫法： -->
+            <img src="{{ url_for('static', filename='images/苔球製作.jpg') }}" alt="苔球製作" class="activity-img" onerror="this.onerror=null; this.src='/static/images/苔球製作.jpg';">
         </div>
 
-        <!-- 原有的問題查詢與互動表單區塊 -->
-        <div class="card-box">
-            <h2>❓ 活動問題諮詢</h2>
+        <!-- 原有的問題查詢表單區塊 -->
+        <div class="form-box">
             <form action="/activities" method="post">
-                <label for="question">你的問題：</label><br>
+                <label for="question">你的問題:</label><br>
                 <input type="text" id="question" name="question" value="{{ question }}"><br><br>
-                
-                <label for="answer">答案：</label><br>
+                <label for="answer">答案:</label><br>
                 <input type="text" id="answer" name="answer" readonly value="{{ answer }}"><br><br>
                 
-                <input type="submit" value="送出">
-                <input type="button" value="回首頁" onclick="window.location.href='/'">
+                <div class="btn-group">
+                    <input type="submit" value="送出">
+                    <input type="button" value="回首頁" onclick="window.location.href='/'">
+                </div>
             </form>
         </div>
     </section>
