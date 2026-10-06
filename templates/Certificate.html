@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>檢定與證照 - 學習歷程檔案</title>
+    <style>
+        body {
+            font-family: "Noto Sans TC", Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #1565c0;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+        header p {
+            margin-top: 8px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+        section {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+        .form-box {
+            background-color: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+            margin-bottom: 20px;
+        }
+        .section-title {
+            margin-top: 0;
+            color: #1565c0;
+            font-size: 20px;
+            border-bottom: 2px solid #e3f2fd;
+            padding-bottom: 8px;
+        }
+        .cert-list {
+            list-style: none;
+            padding: 0;
+            margin: 15px 0;
+        }
+        .cert-item {
+            padding: 12px 15px;
+            background-color: #f8f9fa;
+            border-left: 4px solid #1565c0;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+        .cert-item h3 {
+            margin: 0 0 5px 0;
+            font-size: 16px;
+            color: #222;
+        }
+        .cert-item p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+        .cert-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        label {
+            font-weight: bold;
+            font-size: 14px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        .btn-group {
+            margin-top: 15px;
+        }
+        input[type="submit"], input[type="button"] {
+            background-color: #1565c0;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            margin-right: 10px;
+            transition: background-color 0.2s;
+        }
+        input[type="button"] {
+            background-color: #757575;
+        }
+        input[type="submit"]:hover {
+            background-color: #0d47a1;
+        }
+        input[type="button"]:hover {
+            background-color: #616161;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>📜 檢定與證照 (Certificate)</h1>
+        <p>專業技能檢定與各類證書紀錄</p>
+    </header>
+
+    <section>
+        <!-- 證照展示區塊 -->
+        <div class="form-box">
+            <h2 class="section-title">🎖️ 已取得之證照與檢定</h2>
+            <div class="cert-list">
+                <div class="cert-item">
+                    <h3>資訊與電腦相關能力檢定</h3>
+                    <p>取得基礎程式設計與電腦軟體應用能力相關認證。</p>
+                    <!-- 若未來有證照圖片，可取消下一行的註解並改檔名 -->
+                    <!-- <img src="{{ url_for('static', filename='images/certificate1.jpg') }}" alt="證照照片" class="cert-img" onerror="this.onerror=null; this.src='/static/images/certificate1.jpg';"> -->
+                </div>
+                <div class="cert-item">
+                    <h3>語言檢定 / 專業證照</h3>
+                    <p>持續提升語言能力與各項跨領域檢定。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 查詢/互動表單區塊 -->
+        <div class="form-box">
+            <h3 class="section-title">💬 證照資訊查詢</h3>
+            <form action="/certificate" method="post">
+                <p>
+                    <label for="question">你的問題:</label><br>
+                    <input type="text" id="question" name="question" value="{{ question if question else '' }}" placeholder="請輸入欲查詢的證照名稱或問題">
+                </p>
+                <p>
+                    <label for="answer">答案:</label><br>
+                    <input type="text" id="answer" name="answer" readonly value="{{ answer if answer else '' }}">
+                </p>
+                <div class="btn-group">
+                    <input type="submit" value="送出">
+                    <input type="button" value="回首頁" onclick="window.location.href='/'">
+                </div>
+            </form>
+        </div>
+    </section>
+
+</body>
+</html>
