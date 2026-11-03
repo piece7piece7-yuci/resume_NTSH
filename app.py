@@ -2,10 +2,9 @@ from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
-# 建立題庫
+# 建立中韓題庫
 zh_ko_dict = {
     "你好": "안녕하세요",
-    "안녕하세요" : "你好",
     "謝謝": "감사합니다",
     "對不起": "죄송합니다",
     "早安": "좋은 아침",
@@ -17,6 +16,19 @@ zh_ko_dict = {
     "愛": "사랑"
 }
 
+# 建立中日題庫
+zh_ko_dict = {
+    "你好": "こんにちは",
+    "謝謝": "ありがとう",
+    "對不起": "ごめんなさい",
+    "早安": "おはようございます",
+    "晚安": "おやすみなさい",
+    "老師": "先生（せんせい）",
+    "學生": "学生（がくせい）",
+    "朋友": "友達（ともだち）",
+    "家人": "家族（かぞく）",
+    "愛": "愛（あい）"
+}
 
 @app.route('/')
 def index():
@@ -30,7 +42,7 @@ def competition():
 @app.route('/ask', methods=['GET', 'POST'])
 def ask():
     if request.method == 'POST':
-        # 2. 讀取學生的問題###^#@#Q%#@
+        # 2. 讀取學生的問題
         question1 = request.form.get('question', '').strip()
         # 3. 查詢題庫的對應答案
         # answer1 = zh_ko_dict.get(question, "抱歉，我目前沒有這個詞的韓文對應。")
@@ -42,7 +54,21 @@ def ask():
     return render_template('ask.html', question="", answer="")
 
 
+# 使用 dict 作為中日翻譯的題庫
+@app.route('/ask2', methods=['GET', 'POST'])
+def ask2():
+    if request.method == 'POST':
+        # 2. 讀取學生的問題
+        question1 = request.form.get('question', '').strip()
+        # 3. 查詢題庫的對應答案
+        # answer1 = zh_ko_dict.get(question, "抱歉，我目前沒有這個詞的日文對應。")
 
+        answer1 = zh_ko_dict[question1]
+        # 4. 回傳答案給學生
+        return render_template('ask2.html', question=question1, answer=answer1)
+    # GET 時給空白欄位
+    return render_template('ask2.html', question="", answer="")
+    
 #改成互動 3/17
 @app.route('/activities', methods=['GET', 'POST'])
 def activities():
