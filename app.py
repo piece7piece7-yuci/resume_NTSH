@@ -2,6 +2,10 @@ from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
+@app.route('/')
+def index():
+    return render_template('index.html')
+
 # 中韓、中日翻譯共用路由
 @app.route('/ask', methods=['GET', 'POST'])
 def ask():
